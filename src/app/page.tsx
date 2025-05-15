@@ -4,24 +4,16 @@ const fileUrls = [
 
 export default function HomePage() {
   return (
-    <main className="flex h-screen w-screen flex-col place-items-center">
-      <div id="body" className="h-full bg-gray-50 sm:w-full lg:w-4/5 xl:w-3/4">
-        <div
-          id="header"
-          className="flex place-items-center justify-between bg-gray-100 px-5"
-        >
-          <a href="#" className="hover:underline">
-            <h1>Riley Retzloff</h1>
-          </a>
-          <div className="h-8 w-8 rounded-full bg-gray-900 shadow-black transition-all duration-300 hover:scale-95 hover:shadow-lg/50"></div>
+    <main className="flex h-screen w-screen flex-col place-items-center px-3">
+      <div>
+        <h1>Riley Retzloff</h1>
+        <div className="overflow-hidden rounded-xl sm:h-48 md:h-64 lg:h-72 xl:h-96">
+          <img src={fileUrls[0]} alt="Image 1" className="object-cover" />
+          <div></div>
         </div>
-        <div id="content" className="px-8 py-5">
-          <div className="h-96 overflow-hidden rounded-xl">
-            <img src={fileUrls[0]} alt="Image 1" />
-          </div>
-          <h2>this is my website</h2>
-          <p>that&apos;s what it is.</p>
-        </div>
+        <h2>this is my website</h2>
+        <p>that&apos;s just what it is.</p>
+        <p>&macr;&#92;_(&#12484;)_/&macr;</p>
       </div>
     </main>
   );

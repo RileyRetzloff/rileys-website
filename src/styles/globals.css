@@ -6,6 +6,15 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+:root {
+  --font-martian-mono: "martianMono", "martianMono Fallback";
+}
+
+body {
+  @apply bg-black text-white;
+  font-family: var(--font-martian-mono);
+}
+
 h1 {
   @apply mt-4 mb-3 text-4xl font-bold;
 }
