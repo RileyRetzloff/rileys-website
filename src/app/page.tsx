@@ -3,7 +3,7 @@ import { db } from "~/server/db";
 export const dynamic = "force-dynamic";
 
 const fileUrls = [
-  "https://34ggzkze9s.ufs.sh/f/QUrPhpHwWNxUnTWIuK0atRjHTdu4XvcMD1S6gyL5WNQCzP3Z",
+  "https://34ggzkze9s.ufs.sh/f/QUrPhpHwWNxUXSarqAf5NxjRVWc6L8Y4MQIFPTfUKtvy1uJi",
 ];
 
 export default async function HomePage() {
@@ -12,7 +12,7 @@ export default async function HomePage() {
     <main className="flex h-full w-full flex-col place-items-center px-3">
       <div className="w-full">
         <h1>Riley Retzloff</h1>
-        <div className="relative h-40 w-full rounded-xl outline outline-white sm:h-48 md:h-64 lg:h-72 xl:h-96">
+        <div className="relative h-40 w-full overflow-hidden rounded-xl outline outline-white sm:h-48 md:h-64 lg:h-72 xl:h-96">
           <img
             src={fileUrls[0]}
             alt="Image 1"
