@@ -6,39 +6,49 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-:root {
-  --font-martian-mono: "martianMono", "martianMono Fallback";
-}
+@layer base {
+  :root {
+    --font-martian-mono: "martianMono", "martianMono Fallback";
+  }
 
-body {
-  @apply bg-black text-white;
-  font-family: var(--font-martian-mono);
-}
+  body {
+    @apply bg-zinc-950 text-zinc-50;
+    font-family: var(--font-martian-mono);
+  }
 
-h1 {
-  @apply mt-4 mb-3 text-4xl font-bold;
-}
+  h1 {
+    @apply mt-8 mb-6 text-4xl font-bold;
+  }
 
-h2 {
-  @apply mt-3 mb-2 text-3xl font-bold;
-}
+  h2 {
+    @apply mt-6 mb-4 text-3xl font-bold;
+  }
 
-h3 {
-  @apply mt-2 mb-1.5 text-2xl font-bold;
-}
+  h3 {
+    @apply mt-5 mb-3 text-2xl font-bold;
+  }
 
-h4 {
-  @apply mt-1.5 mb-1 text-xl font-semibold;
-}
+  h4 {
+    @apply mt-4 mb-2 text-xl font-medium;
+  }
 
-h5 {
-  @apply mt-1 mb-0.75 text-lg font-semibold;
-}
+  h5 {
+    @apply mt-3 mb-2 text-lg font-medium;
+  }
 
-h6 {
-  @apply mt-0.75 mb-0.5 text-base font-semibold;
-}
+  h6 {
+    @apply mt-3 mb-2 text-base font-medium;
+  }
 
-p {
-  @apply mt-0.5 mb-0.25;
+  p {
+    @apply mt-3 mb-2 text-base leading-7;
+  }
+
+  .text-code {
+    @apply text-sm text-zinc-200;
+  }
+
+  code {
+    @apply mt-3 mb-2 rounded border border-zinc-700 bg-zinc-800 p-1 text-sm text-zinc-200;
+  }
 }
