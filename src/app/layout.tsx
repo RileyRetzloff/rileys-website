@@ -51,7 +51,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${martianMono.variable} ${geist.variable}`}>
-      <body>
+      <body className="h-screen w-screen min-w-64">
         <TopNav />
         {children}
       </body>

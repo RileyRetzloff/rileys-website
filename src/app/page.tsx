@@ -9,11 +9,15 @@ const fileUrls = [
 export default async function HomePage() {
   const posts = await db.query.posts.findMany();
   return (
-    <main className="flex h-screen w-screen flex-col place-items-center px-3">
-      <div>
+    <main className="flex h-full w-full flex-col place-items-center px-3">
+      <div className="w-full">
         <h1>Riley Retzloff</h1>
-        <div className="overflow-hidden rounded-xl outline outline-white sm:h-48 md:h-64 lg:h-72 xl:h-96">
-          <img src={fileUrls[0]} alt="Image 1" className="object-cover" />
+        <div className="relative h-40 w-full rounded-xl outline outline-white sm:h-48 md:h-64 lg:h-72 xl:h-96">
+          <img
+            src={fileUrls[0]}
+            alt="Image 1"
+            className="h-full w-full object-cover object-top"
+          />
         </div>
         <h2>this is my website</h2>
         <h3>that&apos;s just what it is.</h3>
@@ -39,7 +43,7 @@ export default async function HomePage() {
           reprehenderit?
         </p>
         <h3>posts</h3>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           {posts.map((post) => (
             <div
               className="flex w-fit place-items-center rounded border border-zinc-700 bg-zinc-800 p-8"
