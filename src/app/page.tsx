@@ -1,8 +1,11 @@
+import { db } from "~/server/db";
+
 const fileUrls = [
   "https://34ggzkze9s.ufs.sh/f/QUrPhpHwWNxUnTWIuK0atRjHTdu4XvcMD1S6gyL5WNQCzP3Z",
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await db.query.posts.findMany();
   return (
     <main className="flex h-screen w-screen flex-col place-items-center px-3">
       <div>
@@ -33,6 +36,17 @@ export default function HomePage() {
           voluptate. Eos voluptatibus libero cupiditate obcaecati laboriosam ad
           reprehenderit?
         </p>
+        <h3>posts</h3>
+        <div className="flex gap-3">
+          {posts.map((post) => (
+            <div
+              className="flex w-fit place-items-center rounded border border-zinc-700 bg-zinc-800 p-8"
+              key={post.id}
+            >
+              {post.name}
+            </div>
+          ))}
+        </div>
         <h1>heading 1</h1>
         <h2>heading 2</h2>
         <h3>heading 3</h3>
