@@ -29,15 +29,24 @@
   }
 
   h4 {
-    @apply mt-4 mb-2 text-xl font-medium;
+    @apply mt-4 mb-2 text-xl font-bold;
   }
 
   h5 {
-    @apply mt-3 mb-2 text-lg font-medium;
+    @apply mt-3 mb-2 text-lg font-bold;
   }
 
   h6 {
-    @apply mt-3 mb-2 text-base font-medium;
+    @apply mt-3 mb-2 text-base font-bold;
+  }
+
+  .h-container h1:first-child,
+  .h-container h2:first-child,
+  .h-container h3:first-child,
+  .h-container h4:first-child,
+  .h-container h5:first-child,
+  .h-container h6:first-child {
+    margin-top: 0;
   }
 
   p {
@@ -50,5 +59,9 @@
 
   code {
     @apply mt-3 mb-2 rounded border border-zinc-700 bg-zinc-800 p-1 text-sm text-zinc-200;
+  }
+
+  a {
+    @apply text-amber-600 transition-colors hover:text-amber-500 hover:underline;
   }
 }

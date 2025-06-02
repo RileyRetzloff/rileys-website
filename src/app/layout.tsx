@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import { type Metadata } from "next";
 import localFont from "next/font/local";
 import { Geist } from "next/font/google";
+import Link from "next/link";
 
 const martianMono = localFont({
   src: [
@@ -36,12 +37,12 @@ const geist = Geist({
 function TopNav() {
   return (
     <nav className="flex items-center justify-between border-b border-white p-3">
-      <div id="links">
-        <a href="#" className="text-4xl hover:underline">
-          home
-        </a>
+      <div id="links" className="flex">
+        <Link href="/" className="text-lg">
+          rileyretzloff.xyz
+        </Link>
       </div>
-      <div className="h-8 w-8 rounded-full bg-white shadow-white transition-all duration-300 hover:scale-95 hover:shadow-lg/50"></div>
+      <div className="h-8 w-8 rounded-full bg-white shadow-white transition-all duration-300 hover:scale-90 hover:shadow-lg/50"></div>
     </nav>
   );
 }
@@ -53,7 +54,9 @@ export default function RootLayout({
     <html lang="en" className={`${martianMono.variable} ${geist.variable}`}>
       <body className="h-screen w-screen min-w-64">
         <TopNav />
-        {children}
+        <div className="flex h-full w-full flex-col place-items-center">
+          <div className="h-container w-full p-5">{children}</div>
+        </div>
       </body>
     </html>
   );
