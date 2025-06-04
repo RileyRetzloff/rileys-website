@@ -1,6 +1,8 @@
 # Riley's Website
 
 ## TODO (learning stage)
+
+- add blog page w/ CRUD
 - [x] Make it deploy (vercel)
 - [x] Scaffold basic ui with mock data
 - [x] Tidy up build process
