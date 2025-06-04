@@ -19,7 +19,7 @@ export default async function HomePage() {
         <span>
           <Link href="/about">about</Link>&nbsp;(only good one so far)
         </span>
-        <Link href="/recipes">recipes</Link>
+        <Link href="/blog">blog</Link>
       </div>
       <h3>posts</h3>
       <div className="flex flex-wrap gap-3">
