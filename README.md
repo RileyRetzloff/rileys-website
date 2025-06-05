@@ -3,6 +3,7 @@
 ## TODO (learning stage)
 
 - add blog page w/ CRUD
+- implement nav bar menu
 - [x] Make it deploy (vercel)
 - [x] Scaffold basic ui with mock data
 - [x] Tidy up build process
