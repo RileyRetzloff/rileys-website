@@ -1,23 +1,25 @@
-"use client";
+import { db } from "~/server/db";
+import Posts from "./_components/posts";
 
-import { UploadButton } from "~/utils/uploadthing";
+const dynamic = "force-dynamic";
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const images = await db.query.images.findMany({
+    orderBy: (model, { desc }) => desc(model.createdAt),
+  });
+
   return (
     <main>
       <h1>Blog</h1>
-      <UploadButton
-        endpoint={"image"}
-        onClientUploadComplete={(res) => {
-          // Do something with the response
-          console.log("Files: ", res);
-          alert("Upload Completed");
-        }}
-        onUploadError={(error: Error) => {
-          // Do something with the error.
-          alert(`ERROR! ${error.message}`);
-        }}
-      />
+      <div className="flex flex-wrap gap-3">
+        {images.map((image) => (
+          <div className="flex w-72 flex-col items-start gap-2">
+            <img src={image.ufsUrl} key={image.id} />
+            <div>{image.name}</div>
+          </div>
+        ))}
+      </div>
+      <Posts />
     </main>
   );
 }

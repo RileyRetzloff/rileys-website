@@ -3,10 +3,6 @@ import { db } from "~/server/db";
 
 export const dynamic = "force-dynamic";
 
-const fileUrls = [
-  "https://34ggzkze9s.ufs.sh/f/QUrPhpHwWNxUXSarqAf5NxjRVWc6L8Y4MQIFPTfUKtvy1uJi",
-];
-
 export default async function HomePage() {
   const posts = await db.query.posts.findMany();
   return (
