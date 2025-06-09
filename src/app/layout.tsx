@@ -1,8 +1,27 @@
 import "~/styles/globals.css";
-
+import TopNav from "./_components/topnav";
 import { type Metadata } from "next";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import localFont from "next/font/local";
-import { Geist } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
 import Link from "next/link";
 
 const martianMono = localFont({
@@ -29,35 +48,21 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/r.ico" }],
 };
 
-const geist = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist-sans",
-});
-
-function TopNav() {
-  return (
-    <nav className="flex items-center justify-between border-b border-white p-3">
-      <div id="links" className="flex">
-        <Link href="/" className="text-lg">
-          rileyretzloff.xyz
-        </Link>
-      </div>
-      <div className="h-8 w-8 rounded-full bg-white shadow-white transition-all duration-300 hover:scale-90 hover:shadow-lg/50"></div>
-    </nav>
-  );
-}
-
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" className={`${martianMono.variable} ${geist.variable}`}>
-      <body className="h-screen w-screen min-w-64">
-        <TopNav />
-        <div className="flex h-full w-full flex-col place-items-center">
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`{${martianMono.variable} ${geist.variable} ${geistMono.variable} h-screen w-screen min-w-64 antialiased`}
+        >
+          <TopNav />
           <div className="h-container w-full p-5">{children}</div>
-        </div>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

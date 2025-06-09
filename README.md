@@ -8,6 +8,7 @@
 - [x] Scaffold basic ui with mock data
 - [x] Tidy up build process
 - [x] Actually set up a database (vercel postgres)
+- [x] Add auth
 - [ ] Attach database to UI
 - [ ] Add authentication (w/ clerk)
 - [ ] "taint" (server only)
