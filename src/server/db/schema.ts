@@ -36,3 +36,59 @@ export const images = createTable("image", (d) => ({
     .notNull(),
   updatedAt: d.timestamp("updated_at"),
 }));
+
+export const blogPosts = createTable(
+  "blog_post",
+  (d) => ({
+    id: d.integer().primaryKey().generatedByDefaultAsIdentity(),
+    title: d.varchar({ length: 512 }).notNull(),
+    content: d.text().notNull(),
+    authorId: d.varchar({ length: 256 }).notNull(),
+    published: d.boolean().default(false).notNull(),
+    createdAt: d
+      .timestamp({ withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
+  }),
+  (t) => [index("author_idx").on(t.authorId)],
+);
+
+export const comments = createTable(
+  "comment",
+  (d) => ({
+    id: d.integer().primaryKey().generatedByDefaultAsIdentity(),
+    content: d.text().notNull(),
+    authorId: d.varchar({ length: 256 }).notNull(),
+    postId: d
+      .integer()
+      .references(() => blogPosts.id, { onDelete: "cascade" })
+      .notNull(),
+    createdAt: d
+      .timestamp({ withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
+  }),
+  (t) => [
+    index("comment_author_idx").on(t.authorId),
+    index("comment_post_idx").on(t.postId),
+  ],
+);
+
+export const postMedia = createTable(
+  "post_media",
+  (d) => ({
+    id: d.integer().primaryKey().generatedByDefaultAsIdentity(),
+    postId: d
+      .integer()
+      .references(() => blogPosts.id, { onDelete: "cascade" })
+      .notNull(),
+    imageId: d
+      .integer()
+      .references(() => images.id, { onDelete: "cascade" })
+      .notNull(),
+    position: d.integer().default(0),
+  }),
+  (t) => [index("post_media_post_idx").on(t.postId)],
+);
