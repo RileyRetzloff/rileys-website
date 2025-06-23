@@ -2,15 +2,15 @@
 
 ## TODO (learning stage)
 
-- add blog page w/ CRUD
-- implement nav bar menu
 - [x] Make it deploy (vercel)
 - [x] Scaffold basic ui with mock data
 - [x] Tidy up build process
 - [x] Actually set up a database (vercel postgres)
 - [x] Add authentication (w/ clerk)
 - [x] Attach database to UI
-- [ ] Add image upload
+- [x] Add image upload
+- [ ] Add blog page w/ CRUD
+- [ ] Implement nav bar dropdown menu
 - [ ] "taint" (server only)
 - [ ] Use Next/Image component
 - [ ] Error management (w/ Sentry)
