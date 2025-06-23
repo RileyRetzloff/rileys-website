@@ -1,25 +1,39 @@
+import Link from "next/link";
 import { db } from "~/server/db";
-import Posts from "./_components/posts";
+import { auth } from "@clerk/nextjs/server";
 
 const dynamic = "force-dynamic";
 
 export default async function BlogPage() {
-  const images = await db.query.images.findMany({
-    orderBy: (model, { desc }) => desc(model.createdAt),
-  });
+  const blogPosts = await db.query.blogPosts.findMany();
+  const isAdmin = (await auth()).userId === "user_2yHYs3WRSbs3BAS6he40RKpz7nO";
 
   return (
     <main>
-      <h1>Blog</h1>
-      <div className="flex flex-wrap gap-3">
-        {images.map((image) => (
-          <div className="flex w-72 flex-col items-start gap-2">
-            <img src={image.ufsUrl} key={image.id} />
-            <div>{image.name}</div>
+      <div className="flex items-center justify-between">
+        <h1>Blog</h1>
+        <button
+          hidden={!isAdmin}
+          className="rounded p-3 outline outline-white hover:cursor-pointer"
+        >
+          + Add Post
+        </button>
+      </div>
+      <div className="flex flex-wrap gap-5">
+        {blogPosts.map((post) => (
+          <div
+            key={post.id}
+            className="flex w-full flex-col gap-3 rounded p-3 outline outline-white"
+          >
+            <Link href={`/blog/${post.id}`}>
+              <h3>{post.title}</h3>
+            </Link>
+            <div>{post.createdAt.toDateString()}</div>
+            <div>{post.authorId}</div>
+            <div>{post.content}</div>
           </div>
         ))}
       </div>
-      <Posts />
     </main>
   );
 }

@@ -42,7 +42,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Edit Post</h1>
-      <div className="flex flex-col place-items-start gap-5 md:w-1/2 lg:w-1/3 xl:w-1/4">
+      <div className="flex flex-col gap-5">
         <label className="flex flex-col gap-2">
           <span className="font-bold">Title</span>
           <input
@@ -56,7 +56,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
           <span className="font-bold">Content</span>
           <input
             className="rounded p-2 outline outline-white"
-            type="text"
+            type="textarea"
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />

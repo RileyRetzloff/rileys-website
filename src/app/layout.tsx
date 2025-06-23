@@ -60,7 +60,9 @@ export default function RootLayout({
           className={`{${martianMono.variable} ${geist.variable} ${geistMono.variable} h-screen w-screen min-w-64 antialiased`}
         >
           <TopNav />
-          <div className="h-container w-full p-5">{children}</div>
+          <div className="h-container mx-auto flex max-w-screen-xl flex-col p-5">
+            {children}
+          </div>
         </body>
       </html>
     </ClerkProvider>
