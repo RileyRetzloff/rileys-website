@@ -68,3 +68,33 @@
     @apply text-amber-600 transition-colors hover:text-amber-500 hover:underline;
   }
 }
+
+@layer components {
+  .card {
+    @apply rounded-xl bg-zinc-900/50 p-6 shadow-lg backdrop-blur-sm;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-zinc-200;
+  }
+
+  .form-input {
+    @apply w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-zinc-200 transition-colors focus:border-transparent focus:ring-2 focus:ring-amber-600;
+  }
+
+  .btn {
+    @apply rounded-lg px-4 py-2 transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-amber-600 font-medium text-zinc-50 shadow hover:bg-amber-500;
+  }
+
+  .btn-secondary {
+    @apply border border-zinc-700 text-zinc-200 hover:bg-zinc-800;
+  }
+
+  .section-divider {
+    @apply border-t border-zinc-700 pt-4;
+  }
+}
