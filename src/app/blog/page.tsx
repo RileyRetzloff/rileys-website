@@ -2,7 +2,7 @@ import Link from "next/link";
 import { db } from "~/server/db";
 import { auth } from "@clerk/nextjs/server";
 
-const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 
 export default async function BlogPage() {
   const blogPosts = await db.query.blogPosts.findMany();
