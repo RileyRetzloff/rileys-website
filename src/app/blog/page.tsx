@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { db } from "~/server/db";
 import { auth } from "@clerk/nextjs/server";
+import ReactMarkdown from "react-markdown";
 
 export const dynamic = "force-dynamic";
 
@@ -12,10 +13,7 @@ export default async function BlogPage() {
     <main>
       <div className="flex items-center justify-between">
         <h1>Blog</h1>
-        <button
-          hidden={!isAdmin}
-          className="rounded p-3 outline outline-white hover:cursor-pointer"
-        >
+        <button hidden={!isAdmin} className="btn btn-primary">
           + Add Post
         </button>
       </div>
@@ -25,12 +23,34 @@ export default async function BlogPage() {
             key={post.id}
             className="flex w-full flex-col gap-3 rounded p-3 outline outline-white"
           >
-            <Link href={`/blog/${post.id}`}>
-              <h3>{post.title}</h3>
-            </Link>
-            <div>{post.createdAt.toDateString()}</div>
-            <div>{post.authorId}</div>
-            <div>{post.content}</div>
+            <article className="prose lg:prose-xl h-container p-4">
+              <Link href={`/blog/${post.id}`}>
+                <h1>{post.title}</h1>
+              </Link>
+              <div className="text-sm text-gray-500">
+                {new Date(post.createdAt).toLocaleDateString()}
+                {post.updatedAt && (
+                  <span className="text-sm text-gray-500">
+                    &nbsp;(Updated{" "}
+                    {new Date(post.updatedAt).toLocaleDateString()})
+                  </span>
+                )}
+              </div>
+              <hr className="my-5" />
+              <ReactMarkdown>{post.content}</ReactMarkdown>
+              {isAdmin && (
+                <div>
+                  <div className="flex w-full justify-end gap-3">
+                    <Link
+                      href={`/blog/${post.id}/edit`}
+                      className="btn btn-secondary"
+                    >
+                      Edit
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </article>
           </div>
         ))}
       </div>
