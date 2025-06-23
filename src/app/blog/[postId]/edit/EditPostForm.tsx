@@ -31,9 +31,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
 
     setSaving(false);
     if (!res.ok) {
-      // how to show Zod error here?
-      alert("Failed to save");
-      return;
+      alert("Something went wrong");
     }
 
     router.push(`/blog/${post.id}`);

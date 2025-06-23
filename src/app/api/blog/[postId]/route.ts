@@ -13,13 +13,18 @@ export async function PATCH(
   req: Request,
   { params }: { params: { postId: string } },
 ) {
-  console.log(
-    `[PATCH] /api/blog/${params.postId}  –  body:`,
-    await req.clone().text(),
-  );
   const id = Number(params.postId);
-  const json = await req.json();
-  const { title, content } = updatePostSchema.parse(json);
+  const body = await req.json();
+
+  const parse = updatePostSchema.safeParse(body);
+  if (!parse.success) {
+    return NextResponse.json(
+      { error: "validation-error", issues: parse.error.flatten().fieldErrors },
+      { status: 400 },
+    );
+  }
+
+  const { title, content } = parse.data;
 
   await db
     .update(blogPosts)
