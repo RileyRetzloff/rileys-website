@@ -13,9 +13,11 @@ export default async function BlogPage() {
     <main>
       <div className="flex items-center justify-between">
         <h1>Blog</h1>
-        <button hidden={!isAdmin} className="btn btn-primary">
-          + Add Post
-        </button>
+        {isAdmin && (
+          <Link href={`/blog/create`} className="btn btn-primary">
+            + Add Post
+          </Link>
+        )}
       </div>
       <div className="flex flex-wrap gap-5">
         {blogPosts.map((post) => (
